@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  button {
+    background: none;
+    /* border: 3px solid #1f2023; */
+    border-radius: 5px;
+    color: #1f2023;
+    display: block;
+    /* font-size: 1.6em; */
+    font-weight: bold;
+    /* margin: 1em auto; */
+    /* padding: 2em 6em; */
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  button::before,
+  button::after {
+    background: #1f2023;
+    content: '';
+    position: absolute;
+    z-index: -1;
+  }
+  
+  button:hover {
+    color: #1f2023;
+  }
+  .btn-2::after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+  }
+  
+  .btn-2:hover:after {
+    width: 100%;
+  }
+
+  </style>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>나의 계좌 조회</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <hr style="color: #4776bc; height : 4px;">
+              <p><b>나의 소비 패턴을 확인하고 싶다면 <a href="/charts">소비 패턴 진단</a> 을 클릭하세요!</b></p>
+              <h5 class="card-title"><b>입/출금계좌</b></h5>
+              <!-- <p>나의 소비 패턴을 확인하고 싶다면 <a href="../charts-chartjs.html">소비 패턴 진단</a> 을 클릭하세요!</p> -->
+              <hr style="color: #4776bc; height : 4px;">
+
+              <!-- Table with stripped rows -->
+              <table class="table">
+                <thead>
+                  <tr >
+                    <th scope="col">계좌명</th>
+                    <th scope="col">계좌번호</th>
+                    <th scope="col">신규일</th>
+                    <th scope="col">최근거래일</th>
+                    <th scope="col">잔액(원)</th>
+                    <th scope="col">업무</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  onmouseover="this.style.backgroundColor='#fdee8e'" onmouseout="this.style.backgroundColor=''">
+                    <td>일반보통예금</td>
+                    <td>123-45-6789-123</td>
+                    <td>2014.05.27</td>
+                    <td>2022.05.03</td>
+                    <td>3,737,981</td>
+                    <td>                      
+                      <a href="/accounts">
+                      <button class="btn-2">
+                        조회
+                    </button></td>
+                  </tr>
+                  <tr  onmouseover="this.style.backgroundColor='#eaf7fe'" onmouseout="this.style.backgroundColor=''">
+                    <td>KB국민 ONE통장</td>
+                    <td>345-67-8901-234</td>
+                    <td>2017.11.27</td>
+                    <td>2022.04.28</td>
+                    <td>5,768,140</td>
+                    <td>                      
+                      <a href="/accounts">
+                      <button class="w-btn-outline w-btn-gray-outline" type="button">
+                        조회
+                    </button></td>
+                  </tr>
+                  <tr  onmouseover="this.style.backgroundColor='#eaf7fe'" onmouseout="this.style.backgroundColor=''">
+                    <td>KB종합통장</td>
+                    <td>678-90-1234-567</td>
+                    <td>2013.04.11</td>
+                    <td>2020.02.14</td>
+                    <td>7,280</td>
+                    <td>
+                      <button class="w-btn-outline w-btn-gray-outline" type="button">
+                        조회
+                    </button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <table>
+                <thead>
+                  <th scope="col"><h5><b>입/출금계좌 총잔액</b></h5></th>
+                  <th scope="col" align="right">
+                  <h5><b>9,513,401원</b></h5>
+                  </th>
+                </thead>
+              </table> -->
+              <div style="float:left"><h5><b>입/출금계좌 총잔액</b></h5></div>
+              <div style="float: right; margin-right: 100px;"><h5><b>9,513,401 원</b></h5></div> 
+              <br>
+              <br>
+              <br>
+              <!-- End Table with stripped rows -->
+              <h5 class="card-title"><b>예금/적금/신탁 계좌</b></h5>
+              <hr style="color: #4776bc; height : 4px;">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">계좌명</th>
+                    <th scope="col">계좌번호</th>
+                    <th scope="col">신규일</th>
+                    <th scope="col">만기일</th>
+                    <th scope="col">잔액(원)</th>
+                    <th scope="col">업무</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  onmouseover="this.style.backgroundColor='#eaf7fe'" onmouseout="this.style.backgroundColor=''">
+                    <td>KB 청년희망적금</td>
+                    <td>901-23-4567-890</td>
+                    <td>2022.02.25</td>
+                    <td>2024.02.25</td>
+                    <td>1,500,000</td>
+                    <td>
+                      <a href="/accounts">
+                        <button class="btn-2">
+                          조회
+                      </button>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="float:left"><h5><b>예금/적금/신탁 계좌 총잔액</b></h5></div>
+              <div style="float: right; margin-right: 100px;"><h5><b>1,500,000 원</b></h5></div> 
+              <br>
+              <br>
+              <br>
+              <h5 class="card-title"><b>외화신탁 계좌</b></h5>
+              <hr style="color: #4776bc; height : 4px;">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">계좌명</th>
+                    <th scope="col">계좌번호</th>
+                    <th scope="col">신규일</th>
+                    <th scope="col">만기일</th>
+                    <th scope="col">통화</th>
+                    <th scope="col">잔액</th>
+                    <th scope="col">업무</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <center><img src = "../../assets/img/조회결과2.png"></center> -->
+              <center><b>조회 결과가 없습니다.</b></center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{% endblock content %}

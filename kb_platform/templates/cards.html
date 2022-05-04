@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>카드 한 눈에 보기</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/index">Home</a></li>
+          <li class="breadcrumb-item">KB Cards</li>
+          <li class="breadcrumb-item active">카드 한 눈에 보기</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+
+        <!-- CARD 1 -->
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body" style="height:600px">
+              <h5 class="card-title" style="font-weight:bold;">노리 체크카드</h5>
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="home-tab1" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">카드소개</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="profile-tab1" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false">카드혜택</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab" style="text-align:center; margin-top:5%;">
+                  <img src='../assets/img/cards/누리체크카드.png' style="text-align:center; width:70%;">
+                  <div class="card-intro" style="margin-top:10%; font-size:1.2rem;">
+                    <p> ㆍ 대중교통 10% 청구할인 </p>
+                    <p> ㆍ 이동통신요금 2,500원 환급할인 </p>
+                    <p> ㆍ CGV 35% 환급할인 </p>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab">
+                  <div>
+                    <table class='card-intro'>
+                      <thead>
+                        <th>서비스 구분</th>
+                        <th>할인</th>
+                        <th>이용금액 기준</th>
+                        <th>전월이용실적 기준</th>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td>CGV</td>
+                          <td>35%</td>
+                          <td>이용금액 건당 1만원 ~ 2만원</td>
+                          <td rowspan='6'>20만원 이상 시</td>
+                        </tr>
+                        <tr>
+                          <td>아웃백, VIPS</td>
+                          <td>20%</td>
+                          <td>이용금액 건당 3만원 ~ 5만원</td>                          
+                        </tr>
+                        <tr>
+                          <td>스타벅스</td>
+                          <td>20%</td>
+                          <td>이용금액 건당 1만원 ~ 2만원</td>
+                        </tr>
+                        <tr>
+                          <td>롯데월드</td>
+                          <td>50%</td>
+                          <td>이용금액 건당 3만원 ~ 5만원</td>
+                        </tr>
+                        <tr>
+                          <td>GS25</td>
+                          <td>5%</td>
+                          <td>이용금액 건당 1만원 ~ 2만원</td>
+                        </tr>
+                        <tr>
+                          <td>교보문고</td>
+                          <td>5%</td>
+                          <td>이용금액 건당 2만원 ~ 5만원</td>
+                        </tr>
+                        <tr>
+                          <td>대중교통</td>
+                          <td>10%</td>
+                          <td>월 이용금액 2만원까지</td>
+                          <td rowspan='2'>30만원 이상 시</td>
+                        </tr>
+                        <tr>
+                          <td>이동통신</td>
+                          <td>2,500원</td>
+                          <td>이용금액 건당 5만원 이상 시</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div><!-- End Default Tabs -->
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body" style="height:600px">
+              <h5 class="card-title">Default Tabs Justified</h5>
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="home-tab2" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="profile-tab2" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab" style="text-align:center; margin-top:3%;">
+                  <img src='../../assets/img/BeV V카드.png' style="text-align:center; width:65%;">
+                </div>
+                <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab">
+                  Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+                </div>
+              </div><!-- End Default Tabs -->
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body" style="height:600px">
+              <h5 class="card-title">Default Tabs Justified</h5>
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="home-tab3" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="profile-tab3" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
+                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
+                </div>
+                <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab">
+                  Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+                </div>
+              </div><!-- End Default Tabs -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body" style="height:600px">
+              <h5 class="card-title">Default Tabs Justified</h5>
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
+                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
+                </div>
+                <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab">
+                  Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+                </div>
+              </div><!-- End Default Tabs -->
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body" style="height:600px">
+              <h5 class="card-title">Default Tabs Justified</h5>
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
+                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
+                </div>
+                <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab">
+                  Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+                </div>
+              </div><!-- End Default Tabs -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body" style="height:600px">
+              <h5 class="card-title">Default Tabs Justified</h5>
+              <!-- Default Tabs -->
+              <ul class="nav nav-tabs d-flex" id="myTabjustified" role="tablist">
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-justified" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item flex-fill" role="presentation">
+                  <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-justified" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="myTabjustifiedContent">
+                <div class="tab-pane fade show active" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
+                  Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
+                </div>
+                <div class="tab-pane fade" id="profile-justified" role="tabpanel" aria-labelledby="profile-tab">
+                  Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+                </div>
+              </div><!-- End Default Tabs -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{% endblock content %}

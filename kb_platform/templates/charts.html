@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>나의 소비 패턴</h1>
+    <nav>
+      <ol class="breadcrumb">
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">월별 지출 내역</h5>
+
+            <!-- Line Chart -->
+            <canvas id="lineChart" style="max-height: 400px;"></canvas>
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                new Chart(document.querySelector('#lineChart'), {
+                  type: 'line',
+                  data: {
+                    labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월'],
+                    datasets: [{
+                      label: '만원',
+                      data: [65, 59, 80, 81, 56, 55, 40],
+                      fill: false,
+                      borderColor: 'rgb(75, 192, 192)',
+                      tension: 0.1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+              });
+            </script>
+            <!-- End Line CHart -->
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">요일별 지출 내역</h5>
+
+            <!-- Bar Chart -->
+            <canvas id="barChart" style="max-height: 400px;"></canvas>
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                new Chart(document.querySelector('#barChart'), {
+                  type: 'bar',
+                  data: {
+                    labels: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+                    datasets: [{
+                      label: '만원',
+                      data: [6, 4, 5, 8, 10, 15, 10],
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                      ],
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+              });
+            </script>
+            <!-- End Bar CHart -->
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">20대 평균 소비와 나의 평균 소비 비교</h5>
+            <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
+                  legend: {
+                    data: ['내 소비', '20대 소비']
+                  },
+                  radar: {
+                    // shape: 'circle',
+                    indicator: [{
+                        name: '쇼핑',
+                        max: 10000
+                      },
+                      {
+                        name: '식비',
+                        max: 10000
+                      },
+                      {
+                        name: '교통비',
+                        max: 10000
+                      },
+                      {
+                        name: '이동통신',
+                        max: 10000
+                      },
+                      {
+                        name: '의료',
+                        max: 10000
+                      },
+                      {
+                        name: '문화생활',
+                        max: 10000
+                      }
+                    ]
+                  },
+                  series: [{
+                    name: 'Budget vs spending',
+                    type: 'radar',
+                    data: [{
+                        value: [9000, 8500, 5000, 8000, 7500, 7700],
+                        name: '내 소비'
+                      },
+                      {
+                        value: [6000, 6000, 6500, 7000, 5400, 7000],
+                        name: '20대 소비'
+                      }
+                    ]
+                  }]
+                });
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">나의 지출 내역 분석</h5>
+
+            <!-- Doughnut Chart -->
+            <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                new Chart(document.querySelector('#doughnutChart'), {
+                  type: 'doughnut',
+                  data: {
+                    labels: [
+                      '식비',
+                      '이동통신',
+                      '쇼핑',
+                      '문화생활',
+                      '의료',
+                      '교통비'
+                    ],
+                    datasets: [{
+                      label: 'My First Dataset',
+                      data: [600000, 100000, 300000, 200000, 100000, 200000],
+                      backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(117, 99, 255)',
+                        'rgb(39, 232, 136)',
+                        'rgb(237, 133, 21)'
+                      ],
+                      hoverOffset: 4
+                    }]
+                  }
+                });
+              });
+            </script>
+            <!-- End Doughnut CHart -->
+
+          </div>
+        </div>
+      </div>
+        <!-- Budget Report -->
+          <!-- Reports -->
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">???? <span>/Today</span></h5>
+
+                <!-- Line Chart -->
+                <div id="reportsChart"></div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#reportsChart"), {
+                      series: [{
+                        name: 'Sales',
+                        data: [31, 40, 28, 51, 42, 82, 56],
+                      }, {
+                        name: 'Revenue',
+                        data: [11, 32, 45, 32, 34, 52, 41]
+                      }, {
+                        name: 'Customers',
+                        data: [15, 11, 32, 18, 9, 24, 11]
+                      }],
+                      chart: {
+                        height: 350,
+                        type: 'area',
+                        toolbar: {
+                          show: false
+                        },
+                      },
+                      markers: {
+                        size: 4
+                      },
+                      colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                      fill: {
+                        type: "gradient",
+                        gradient: {
+                          shadeIntensity: 1,
+                          opacityFrom: 0.3,
+                          opacityTo: 0.4,
+                          stops: [0, 90, 100]
+                        }
+                      },
+                      dataLabels: {
+                        enabled: false
+                      },
+                      stroke: {
+                        curve: 'smooth',
+                        width: 2
+                      },
+                      xaxis: {
+                        type: 'datetime',
+                        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                      },
+                      tooltip: {
+                        x: {
+                          format: 'dd/MM/yy HH:mm'
+                        },
+                      }
+                    }).render();
+                  });
+                </script>
+                <!-- End Line Chart -->
+
+              </div>
+
+            </div>
+          </div><!-- End Reports -->
+
+    </div>
+  </section>
+
+</main><!-- End #main -->
+{% endblock content %}
