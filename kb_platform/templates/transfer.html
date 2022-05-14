@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+    <h1 style="color: #2c2c2b;">당행/다른기관 이체</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+
+        <div class="card">
+            <div class="card-body" >
+            <hr style="color: #545045; height : 4px;">
+            <div class="container" style="align-items: flex-start; background: #fffdf6; border: 1px solid;" >
+                <br>
+                <h3 style="text-align: center;"><b>안내 및 유의사항</b></h3>
+                <hr style="color: #000000; height : 0.5px;">
+                <p>전일 입금한 타행 자기앞수표 경우 전산장애 등으로 현금화 시간(12:20)이 지연되는 경우가 있으니, 이체 시 현금화 지연에 따른 불편사항에 대해 양해하여 주시기 바랍니다.</p>
+            </div>
+            <hr style="color: #545045; height : 4px;">
+            <br>
+            <br>
+            <div>
+                <h4><b>출금정보</b></h4>
+            </div>
+            <hr style="color: #545045; height : 4px;">
+
+
+            <table class="table">
+                <tr>
+                <th scope="row">출금계좌번호　</th>
+                <td>[입출금 계좌]123-45-6789-123</td>
+                </tr>
+                <tr>
+                <th scope="row">계좌비밀번호</th>
+                <td><input type="text"></td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <div>
+                <h4><b>입금정보</b></h4>
+            </div>
+            <hr style="color: #545045; height : 4px;">
+            <table class="table">
+                <tr>
+                <th scope="row">입금은행</th>
+                <td><select name="items1">
+                    <option value="국민은행">국민은행</option>
+                    <option value="신한은행">신한은행</option>
+                    <option value="농협은행">농협은행</option>
+                    <option value="우리은행">우리은행</option>
+                    <option value="하나은행">하나은행</option>
+                    <option value="기업은행">기업은행</option>
+                </select></td>
+                </tr>
+                <tr>
+                    <th scope="row">입금계좌번호</th>
+                    <td><input type="text" placeholder="'-'없이 숫자만 입력"></td>
+                </tr>
+                <tr>
+                    <th scope="row">이체금액</th>
+                    <td><input type="text"> </td>
+                </tr>
+                <tr>
+                    <th scope="row">받는통장메모</th>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <th scope="row">내통장메모</th>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+            <p>🔸최근 전화금융사기(보이스피싱)피해가 급증하고 있습니다. 한번 더 확인하신 후 이체해 주시기 바랍니다.</p>
+            </div>
+            <div style="display: flex; justify-content: center;" >
+                <a href="/total-accounts"><button class="btn-2" style='font-size:20px; margin-right: 30px;'>뒤로가기</button></a>
+                <!-- <input type="submit" value="이체" style="font-size: 15px;"> -->
+                <button class="btn-2" style='font-size:20px;'>이체</button>
+            </div>
+            <hr style="color: #545045; height : 4px;">
+            <div class="container" style="align-items: flex-start; background: #fffdf6; border: 1px solid;" >
+                <br>
+                <h4 style="text-align: center;"><b>알아두세요.</b></h4>
+                <br>
+                <p>- 친구, 지인 및 거래처에서 인터넷메신저 또는 휴대전화 문자메시지를 통해 송금을 요구받은 경우에는 반드시 이체 전 전화로 사실관계여부를 확인해주시기 바랍니다.</p>
+                <p>- 안전한 전자금융거래를 위하여 각종 비밀번호, 보안카드번호 등 금융거래 관련 개인정보가 유출되지 않도록 유의하여 주시기 바랍니다.</p>
+                <p>- 이체진행 중 에러가 발생하거나, 정상적으로 처리가 완료되지 않은 경우, 반드시 이체조회결과에서 거래내역을 조회한 후 다시 이체거래를 진행해주시기 바랍니다.</p>
+                <p>- <b>'받는통장 메모'</b>는 받는분의 통장에 인자하여 드리는 메세지이며, 아파트 관리비를 납부하실 경우에는 동-호수를 입력하시기 바랍니다. 예)101동 1001호</p>
+                <p>- <b>'내통장 메모'</b>는 고객님의 통장에 인자하여 드리는 적요 메세지입니다. 미입력시 받는 분 통장에는 고객님 이름이, 고객님 통장에는 상대 은행명과 상대 예금주명이 인자됩니다.</p>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+
+<style>
+    th{
+        font-size: 15px;
+    }
+    td{
+        font-size: 13px;
+        text-align: left;
+    }
+    p{
+        font-size: 13px;
+    }
+    tr{
+        font-size : 13px;
+    }
+    button {
+    background: none;
+    /* border: 3px solid #1f2023; */
+    border-radius: 5px;
+    color: #1f2023;
+    display: block;
+    /* font-size: 1.6em; */
+    font-weight: bold;
+    /* margin: 1em auto; */
+    /* padding: 2em 6em; */
+    position: relative;
+    text-transform: uppercase;
+}
+
+button::before,
+button::after {
+    background: #1f2023;
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+button:hover {
+    color: #1f2023;
+}
+.btn-2::after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+}
+
+.btn-2:hover:after {
+    width: 100%;
+}
+
+</style>
+</main><!-- End #main -->
+{% endblock content %}

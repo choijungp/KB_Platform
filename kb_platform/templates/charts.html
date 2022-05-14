@@ -4,11 +4,7 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>나의 소비 패턴</h1>
-    <nav>
-      <ol class="breadcrumb">
-      </ol>
-    </nav>
+    <h1 style="margin-bottom: 15px;">나의 소비 습관</h1>
   </div><!-- End Page Title -->
 
   <section class="section">
@@ -17,7 +13,7 @@
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">월별 지출 내역</h5>
+            <h5 class="card-title"  style="font-weight:bold;">월별 지출 내역</h5>
 
             <!-- Line Chart -->
             <canvas id="lineChart" style="max-height: 400px;"></canvas>
@@ -54,7 +50,7 @@
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">요일별 지출 내역</h5>
+            <h5 class="card-title"  style="font-weight:bold;">요일별 지출 내역</h5>
 
             <!-- Bar Chart -->
             <canvas id="barChart" style="max-height: 400px;"></canvas>
@@ -107,7 +103,7 @@
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">20대 평균 소비와 나의 평균 소비 비교</h5>
+            <h5 class="card-title"  style="font-weight:bold;">20대 평균 소비와 나의 평균 소비 비교</h5>
             <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
             <script>
               document.addEventListener("DOMContentLoaded", () => {
@@ -166,7 +162,7 @@
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">나의 지출 내역 분석</h5>
+            <h5 class="card-title" style="font-weight:bold;">나의 지출 내역 분석</h5>
 
             <!-- Doughnut Chart -->
             <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
@@ -187,12 +183,12 @@
                       label: 'My First Dataset',
                       data: [600000, 100000, 300000, 200000, 100000, 200000],
                       backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)',
-                        'rgb(117, 99, 255)',
-                        'rgb(39, 232, 136)',
-                        'rgb(237, 133, 21)'
+                        'rgb(255, 206, 93)',
+                        'rgb(255, 170, 90)',
+                        'rgb(252, 132, 81)',
+                        'rgb(91, 117, 203)',
+                        'rgb(126, 151, 231)',
+                        'rgb(141, 209, 119)'
                       ],
                       hoverOffset: 4
                     }]
@@ -210,7 +206,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">???? <span>/Today</span></h5>
+                <h5 class="card-title"  style="font-weight:bold;">주계좌 소비 흐름 <span> / This month</span></h5>
 
                 <!-- Line Chart -->
                 <div id="reportsChart"></div>
@@ -219,13 +215,13 @@
                   document.addEventListener("DOMContentLoaded", () => {
                     new ApexCharts(document.querySelector("#reportsChart"), {
                       series: [{
-                        name: 'Sales',
+                        name: '편의점',
                         data: [31, 40, 28, 51, 42, 82, 56],
                       }, {
-                        name: 'Revenue',
+                        name: '쇼핑',
                         data: [11, 32, 45, 32, 34, 52, 41]
                       }, {
-                        name: 'Customers',
+                        name: '문화생활',
                         data: [15, 11, 32, 18, 9, 24, 11]
                       }],
                       chart: {
@@ -257,11 +253,11 @@
                       },
                       xaxis: {
                         type: 'datetime',
-                        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                        categories: ["2022-05-01", "2022-05-02", "2022-05-03", "2022-05-04", "2022-05-05", "2022-05-06", "2022-05-07"]
                       },
                       tooltip: {
                         x: {
-                          format: 'dd/MM/yy HH:mm'
+                          format: 'dd/MM/yy'
                         },
                       }
                     }).render();

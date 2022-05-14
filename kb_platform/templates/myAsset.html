@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  table.All_Asset {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: center;
+    line-height: 1.5;
+    border-top: 2px solid #ccc;
+    margin: 20px 10px;
+    width:100%;
+  }
+  table.All_Asset th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    font-size:17px;
+    vertical-align: top;
+    border-bottom: 2px solid #ccc;
+    background: #efefef;
+  }
+  table.All_Asset td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 2px solid #ccc;
+  }
+
+  th{
+      font-size:12px;
+  }
+
+</style>
+
+<main id="main" class="main">
+  
+  <div class="pagetitle">
+  <h1>나의 자산 현황</h1>
+  </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+
+                <!--All_Asset table-->
+                <div id='All_Asset'>
+                  <h4 class="card-title" style="font-weight:bold;">총 자산 현황</h4>
+                  <table class="All_Asset" style="font-size:15px;">
+                    <tr>
+                      <th scope="row">총 보유 자산</th>
+                      <td>400,000,000원</td>
+                    </tr>
+                  </table>
+                </div><!-- End All_Asset table-->
+
+                <div id='All_Asset_chart'>
+                  <h4 class="card-title" style="font-weight:bold;">총 자산 차트</h4>
+                  <!-- Doughnut Chart -->
+                  <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new Chart(document.querySelector('#doughnutChart'), {
+                        type: 'doughnut',
+                        data: {
+                          labels: [
+                            '계좌','증권','금'
+                          ],
+                          datasets: [{
+                            label: 'My First Dataset',
+                            data: [308,121,92],
+                            backgroundColor: [
+                              'rgb(255, 206, 93)',
+                              'rgb(255, 170, 90)',
+                              'rgb(141, 209, 119)',
+                            ],
+                            hoverOffset: 4
+                          }]
+                        },
+                        options: {
+                          responsive: true,
+                          plugins: {
+                            legend: {
+                              position: 'right',
+                              align: "center",
+                              display:true,
+                              labels: {
+                                usePointStyle: true,
+                                font: {
+                                  size: 15,
+                                }
+                              }
+                            }
+                          }
+                        }
+                      });
+                    });
+                  </script>
+                </div><!-- End Doughnut CHart -->
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div id='All_Asset_contents'>
+                <!-- 상세 자산 내역 시작 -->
+                <h4 class="card-title" style="font-weight:bold;">상세 자산 내역</h4>
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="color: #2c2c2b;">계좌</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="color: #2c2c2b;">증권</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" style="color: #2c2c2b;"> 금 </a>
+                  </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+                    <script>
+                      {% comment %} 계좌 6분류 {% endcomment %}
+                        $(document).ready(function() {
+                            var ctx = $("#chart-line");
+                            var myLineChart = new Chart(ctx, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ["Spring", "Summer", "Fall", "Winter"],
+                                    datasets: [{
+                                        data: [1200, 1700, 800, 200],
+                                        backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"]
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: 'Weather'
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                    <canvas id="chart-line" class="chartjs-render-monitor" style="display: block; max-height: 250px;"></canvas>
+
+                    <br>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">계좌명</th>
+                          <th scope="col">계좌번호</th>
+                          <th scope="col">잔액(원)</th>
+                        </tr>
+                      </thead>
+                      <tbody style="font-size:15px;">
+                        <tr>
+                          <td>일반보통예금</td>
+                          <td>123-45-6789-123</td>
+                          <td>3,737,981</td>
+                        </tr>
+                        <tr>
+                          <td>KB국민 ONE통장</td>
+                          <td>345-67-8901-234</td>
+                          <td>5,768,140</td>
+                        </tr>
+                        <tr>
+                          <td>KB종합통장</td>
+                          <td>678-90-1234-567</td>
+                          <td>7,280</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <script>
+                         {% comment %} 증권 2분류 {% endcomment %}
+                          $(document).ready(function() {
+                              var ctx = $("#chart-line2");
+                              var myLineChart = new Chart(ctx, {
+                                  type: 'doughnut',
+                                  data: {
+                                      labels: ["예수금", "주식"],
+                                      datasets: [{
+                                          data: [200, 1700],
+                                          backgroundColor: ["rgb(255, 206, 93)", "rgb(255, 170, 89)"]
+                                      }]
+                                  },
+                                  options: {
+                                      title: {
+                                          display: true,
+                                          text: 'Weather'
+                                      }
+                                  }
+                              });
+                          });
+                    </script>
+                    <canvas id="chart-line2" class="chartjs-render-monitor" style="display: block; max-height: 250px;"></canvas>
+                    <br>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">계좌명</th>
+                          <th scope="col">계좌번호</th>
+                          <th scope="col">잔액(원)</th>
+                        </tr>
+                      </thead>
+                      <tbody style="font-size:15px;">
+                        <tr>
+                          <td>일반보통예금</td>
+                          <td>123-45-6789-123</td>
+                          <td>3,737,981</td>
+                        </tr>
+                        <tr>
+                          <td>KB국민 ONE통장</td>
+                          <td>345-67-8901-234</td>
+                          <td>5,768,140</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <script>
+                      $(document).ready(function() {
+                          var ctx = $("#chart-line3");
+                          var myLineChart = new Chart(ctx, {
+                              type: 'doughnut',
+                              data: {
+                                  labels: ["Spring", "Summer", "Fall", "Winter"],
+                                  datasets: [{
+                                      data: [1200, 1700, 800, 200],
+                                      backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"]
+                                  }]
+                              },
+                              options: {
+                                  title: {
+                                      display: true,
+                                      text: 'Weather'
+                                  }
+                              }
+                          });
+                      });
+                    </script>
+                    <canvas id="chart-line3" class="chartjs-render-monitor" style="display: block; max-height: 250px;"></canvas>
+                    <br>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">계좌명</th>
+                          <th scope="col">계좌번호</th>
+                          <th scope="col">잔액(원)</th>
+                        </tr>
+                      </thead>
+                      <tbody style="font-size:15px;">
+                        <tr>
+                          <td>일반보통예금</td>
+                          <td>123-45-6789-123</td>
+                          <td>3,737,981</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+
+      </div><!--end row-->
+    </section>
+
+</main><!-- End #main -->
+{% endblock content %}

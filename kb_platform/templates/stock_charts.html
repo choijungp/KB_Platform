@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    $(function(){
+        $('#searchBtn').on('click', function(){
+          var stock = $('.form-control').val();
+          $('.js-button-text text-9pA37sIi text-IQnsk0hp').text(stock);
+        });
+    });
+</script>
+
+<!-- TradingView Widget BEGIN -->
+<main id="main" class="main">
+<div class="pagetitle">
+    <div class="input-group mb-3">
+        <h1>주식</h1>
+
+        {% comment %} <input type="text" class="form-control" placeholder="Search" style="margin-left:100px;">
+        <div class="input-group-append">
+          <button id="searchBtn" class="btn btn-warning" type="submit">검색</button>
+        </div> {% endcomment %}
+    </div>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="tradingview-widget-container" style="height:700px;">
+                    <!-- <div id="tradingview_72e7d"></div> -->
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                            new TradingView.widget({
+                                "autosize": true,
+                                "symbol": "KRX:105560",
+                                "timezone": "Etc/UTC",
+                                "theme": "light",
+                                "style": "1",
+                                "locale": "kr",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": true,
+                                "withdateranges": true,
+                                "range": "YTD",
+                                "hide_side_toolbar": false,
+                                "allow_symbol_change": true,
+                                "details": true,
+                                "hotlist": true,
+                                "calendar": true,
+                                "show_popup_button": true,
+                                "popup_width": "1000",
+                                "popup_height": "650",
+                                "container_id": "tradingview_72e7d"
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title" style="font-weight:bold; font-size:23px; text-align:center; align:center;">호가</h4>
+                <div class="row">
+                    <div id="sell_tab" class="offset-lg-1 col-lg-3" style="align:center; text-align:center;">
+                        <h4 class="card-title" style="color:#2B00FF !important; font-weight:bold; font-size:23px;">매도</h4>
+                        <form>
+                            <select name="cars" class="custom-select" style="width:200px;">
+                              <option value="지정가">지정가</option>
+                              <option value="시장가">시장가</option>
+                            </select>
+                            <br>
+                            <input type="text" style="width:200px; margin-top:30px;" placeholder="원">
+                            <br>
+                            <div style="margin-top:10px;">
+                                <input type=hidden name="sell_price" value="5500"  style="width:180px;">
+                                <input type="button" value=" - " onclick="del();">
+                                <input type="text" name="amount" value="1" size="3" onchange="change();">
+                                <input type="button" value=" + " onclick="add();">
+                            </div>
+                            <button type="button" class="btn" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(1, 51, 191); color:white;">팔자</button>
+                        </form>
+                    </div>
+    
+                    <div id="stock_tab" class="col-lg-4" style="align:center; text-align:center;">
+                        <table id="SellBuyStock" style="margin:auto; text-align:center; font-size:15px;">
+                            <thead>
+                                <th>매도체결량</th>
+                                <th>주문</th>
+                                <th>매수체결량</th>
+                            </thead>
+
+                            <tbody>
+                                <div>
+                                    <tr>
+                                        <td class="sell_back">388</td>
+                                        <td>42,350</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">4,220</td>
+                                        <td>42,300</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">1,180</td>
+                                        <td>42,250</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">1,437</td>
+                                        <td>42,200</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">1,090</td>
+                                        <td>42,150</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">1,881</td>
+                                        <td>42,100</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">1,328</td>
+                                        <td>42,050</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">9,221</td>
+                                        <td>42,000</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">8,350</td>
+                                        <td>41,950</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sell_back">4,913</td>
+                                        <td>41,900</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>41,850</td>
+                                        <td class="buy_back">2,135</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>41,800</td>
+                                        <td class="buy_back">1,200</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>41,750</td>
+                                        <td class="buy_back">1,343</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>41,700</td>
+                                        <td class="buy_back">743</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>41,650</td>
+                                        <td class="buy_back">650</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>41,600</td>
+                                        <td class="buy_back">425</td>
+                                    </tr>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    <div id="buy_tab" class="col-lg-3 " style="align:center; text-align:center;">
+                        <h4 class="card-title" style="color:#FF0000 !important; font-weight:bold; font-size:23px;">매수</h4>
+                        <form>
+                            <select name="cars" class="custom-select" style="width:200px;">
+                              <option value="지정가">지정가</option>
+                              <option value="시장가">시장가</option>
+                            </select>
+                            <br>
+                            <input type="text" style="width:200px; margin-top:30px;" placeholder="원">
+                            <br>
+                            <div style="margin-top:10px;">
+                                <input type=hidden name="sell_price" value="5500"  style="width:180px;">
+                                <input type="button" value=" - " onclick="del();">
+                                <input type="text" name="amount" value="1" size="3" onchange="change();">
+                                <input type="button" value=" + " onclick="add();">
+                            </div>
+                            <button type="button" class="btn" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(205, 45, 55); color:white;">사자</button>
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</main>
+<!-- TradingView Widget END -->
+{% endblock content %}

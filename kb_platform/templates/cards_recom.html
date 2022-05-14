@@ -1,0 +1,649 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  p{
+    font-size:15px;
+  }
+
+  #cards{
+    height:550px;
+  }
+
+  #graph{
+    height:600px;
+  }
+</style>
+
+<script>
+  $(function(){
+    $('#recomBtn').on('click', function(){
+      $(this).remove();
+      $('#spinnerBtn').show();
+      setTimeout(function(){
+        $('#spinnerBtn').hide();
+        $('#recommended_cards').show();
+      }, 1000);
+    });
+  });
+</script>
+
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1  style="margin-bottom: 15px;">나에게 맞는 카드 추천</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section" style="margin-top : 30px;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card" id="graph">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-weight:bold;">나의 지출 내역 분석</h5>
+        
+                    <!-- Doughnut Chart -->
+                    <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+                    <script>
+                      document.addEventListener("DOMContentLoaded", () => {
+                        new Chart(document.querySelector('#doughnutChart'), {
+                          type: 'doughnut',
+                          data: {
+                            labels: [
+                              '식비',
+                              '이동통신',
+                              '쇼핑',
+                              '문화생활',
+                              '의료',
+                              '교통비'
+                            ],
+                            datasets: [{
+                              label: 'My First Dataset',
+                              data: [600000, 100000, 300000, 200000, 100000, 200000],
+                              backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)',
+                                'rgb(117, 99, 255)',
+                                'rgb(39, 232, 136)',
+                                'rgb(237, 133, 21)'
+                              ],
+                              hoverOffset: 4
+                            }]
+                          }
+                        });
+                      });
+                    </script>
+                    <!-- End Doughnut CHart -->
+        
+                  </div>
+                  <div style="margin-left:auto; margin-right:auto; margin-bottom:30px;">
+                    <button type="button" id="recomBtn" class="btn btn-warning" style="margin-top:15px; width:220px; margin-left:auto; margin-right:auto;">나에게 알맞는 카드 찾기</button>
+                    <div id="spinnerBtn" class="spinner-border text-warning" style="margin-left:auto; margin-right:auto; margin-bottom:20px; display:none;"></div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="recommended_cards" style="display:none;"> 
+
+            <div class="col-lg-4">
+              <div class="card">
+                <div id="cards" class="card-body">
+                  <h5 class="card-title" style="font-size:20px; font-weight:bold;">노리 체크카드</h5>
+                  <!-- Bordered Tabs -->
+                  <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true" style="font-size:15px;">카드소개</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-2" id="borderedTabContent">
+                    <div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab" style="text-align:center;">
+                      <img src='../assets/img/cards/누리체크카드.png' style="text-align:center; margin-top:35px; width:70%;">
+                      <div class="card-intro" style="margin-top:10%; font-size:1.2rem;">
+                        <p> ㆍ 대중교통 10% 청구할인 </p>
+                        <p> ㆍ 이동통신요금 2,500원 환급할인 </p>
+                        <p> ㆍ CGV 35% 환급할인 </p>
+    
+                        <div>
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"  style="margin-top:15px;">혜택 상세보기</button>
+    
+                          <div class="modal" id="myModal">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                              
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title" style="font-size:20px;">카드 혜택</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                  <table class='card_intro' style="text-align:center; margin-left: auto; margin-right: auto;">
+                                    <thead>
+                                      <th>서비스 구분</th>
+                                      <th>할인</th>
+                                      <th>이용금액 기준</th>
+                                      <th>전월이용실적 기준</th>
+                                    </thead>
+              
+                                    <tbody>
+                                      <tr>
+                                        <td>CGV</td>
+                                        <td>35%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                        <td rowspan='6'>20만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>아웃백, VIPS</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>                          
+                                      </tr>
+                                      <tr>
+                                        <td>스타벅스</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>롯데월드</td>
+                                        <td>50%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>GS25</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>교보문고</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 2만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>대중교통</td>
+                                        <td>10%</td>
+                                        <td>월 이용금액 2만원까지</td>
+                                        <td rowspan='2'>30만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>이동통신</td>
+                                        <td>2,500원</td>
+                                        <td>이용금액 건당 5만원 이상 시</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <div>
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">상세보기</button>
+    
+                          <div class="modal" id="myModal">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                              
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title">카드 혜택</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body" style="font-size:30px;">
+                                  <table class='card_intro' style="text-align:center; margin-left: auto; margin-right: auto;">
+                                    <thead>
+                                      <th>서비스 구분</th>
+                                      <th>할인</th>
+                                      <th>이용금액 기준</th>
+                                      <th>전월이용실적 기준</th>
+                                    </thead>
+              
+                                    <tbody>
+                                      <tr>
+                                        <td>CGV</td>
+                                        <td>35%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                        <td rowspan='6'>20만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>아웃백, VIPS</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>                          
+                                      </tr>
+                                      <tr>
+                                        <td>스타벅스</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>롯데월드</td>
+                                        <td>50%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>GS25</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>교보문고</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 2만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>대중교통</td>
+                                        <td>10%</td>
+                                        <td>월 이용금액 2만원까지</td>
+                                        <td rowspan='2'>30만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>이동통신</td>
+                                        <td>2,500원</td>
+                                        <td>이용금액 건당 5만원 이상 시</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div><!-- End Bordered Tabs -->
+    
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-4">
+              <div class="card">
+                <div id="cards" class="card-body">
+                  <h5 class="card-title" style="font-size:20px; font-weight:bold;">노리 체크카드</h5>
+                  <!-- Bordered Tabs -->
+                  <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true" style="font-size:15px;">카드소개</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-2" id="borderedTabContent">
+                    <div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab" style="text-align:center;">
+                      <img src='../assets/img/cards/누리체크카드.png' style="text-align:center; margin-top:35px; width:70%;">
+                      <div class="card-intro" style="margin-top:10%; font-size:1.2rem;">
+                        <p> ㆍ 대중교통 10% 청구할인 </p>
+                        <p> ㆍ 이동통신요금 2,500원 환급할인 </p>
+                        <p> ㆍ CGV 35% 환급할인 </p>
+    
+                        <div>
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"  style="margin-top:15px;">혜택 상세보기</button>
+    
+                          <div class="modal" id="myModal">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                              
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title" style="font-size:20px;">카드 혜택</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                  <table class='card_intro' style="text-align:center; margin-left: auto; margin-right: auto;">
+                                    <thead>
+                                      <th>서비스 구분</th>
+                                      <th>할인</th>
+                                      <th>이용금액 기준</th>
+                                      <th>전월이용실적 기준</th>
+                                    </thead>
+              
+                                    <tbody>
+                                      <tr>
+                                        <td>CGV</td>
+                                        <td>35%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                        <td rowspan='6'>20만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>아웃백, VIPS</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>                          
+                                      </tr>
+                                      <tr>
+                                        <td>스타벅스</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>롯데월드</td>
+                                        <td>50%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>GS25</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>교보문고</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 2만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>대중교통</td>
+                                        <td>10%</td>
+                                        <td>월 이용금액 2만원까지</td>
+                                        <td rowspan='2'>30만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>이동통신</td>
+                                        <td>2,500원</td>
+                                        <td>이용금액 건당 5만원 이상 시</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <div>
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">상세보기</button>
+    
+                          <div class="modal" id="myModal">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                              
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title">카드 혜택</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body" style="font-size:30px;">
+                                  <table class='card_intro' style="text-align:center; margin-left: auto; margin-right: auto;">
+                                    <thead>
+                                      <th>서비스 구분</th>
+                                      <th>할인</th>
+                                      <th>이용금액 기준</th>
+                                      <th>전월이용실적 기준</th>
+                                    </thead>
+              
+                                    <tbody>
+                                      <tr>
+                                        <td>CGV</td>
+                                        <td>35%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                        <td rowspan='6'>20만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>아웃백, VIPS</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>                          
+                                      </tr>
+                                      <tr>
+                                        <td>스타벅스</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>롯데월드</td>
+                                        <td>50%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>GS25</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>교보문고</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 2만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>대중교통</td>
+                                        <td>10%</td>
+                                        <td>월 이용금액 2만원까지</td>
+                                        <td rowspan='2'>30만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>이동통신</td>
+                                        <td>2,500원</td>
+                                        <td>이용금액 건당 5만원 이상 시</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div><!-- End Bordered Tabs -->
+    
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-4">
+              <div class="card">
+                <div id="cards" class="card-body">
+                  <h5 class="card-title" style="font-size:20px; font-weight:bold;">노리 체크카드</h5>
+                  <!-- Bordered Tabs -->
+                  <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-home" type="button" role="tab" aria-controls="home" aria-selected="true" style="font-size:15px;">카드소개</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content pt-2" id="borderedTabContent">
+                    <div class="tab-pane fade show active" id="bordered-home" role="tabpanel" aria-labelledby="home-tab" style="text-align:center;">
+                      <img src='../assets/img/cards/누리체크카드.png' style="text-align:center; margin-top:35px; width:70%;">
+                      <div class="card-intro" style="margin-top:10%; font-size:1.2rem;">
+                        <p> ㆍ 대중교통 10% 청구할인 </p>
+                        <p> ㆍ 이동통신요금 2,500원 환급할인 </p>
+                        <p> ㆍ CGV 35% 환급할인 </p>
+    
+                        <div>
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"  style="margin-top:15px;">혜택 상세보기</button>
+    
+                          <div class="modal" id="myModal">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                              
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title" style="font-size:20px;">카드 혜택</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                  <table class='card_intro' style="text-align:center; margin-left: auto; margin-right: auto;">
+                                    <thead>
+                                      <th>서비스 구분</th>
+                                      <th>할인</th>
+                                      <th>이용금액 기준</th>
+                                      <th>전월이용실적 기준</th>
+                                    </thead>
+              
+                                    <tbody>
+                                      <tr>
+                                        <td>CGV</td>
+                                        <td>35%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                        <td rowspan='6'>20만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>아웃백, VIPS</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>                          
+                                      </tr>
+                                      <tr>
+                                        <td>스타벅스</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>롯데월드</td>
+                                        <td>50%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>GS25</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>교보문고</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 2만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>대중교통</td>
+                                        <td>10%</td>
+                                        <td>월 이용금액 2만원까지</td>
+                                        <td rowspan='2'>30만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>이동통신</td>
+                                        <td>2,500원</td>
+                                        <td>이용금액 건당 5만원 이상 시</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-warning" data-dismiss="modal">닫기</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="bordered-profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <div>
+                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">상세보기</button>
+    
+                          <div class="modal" id="myModal">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                              
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title">카드 혜택</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                
+                                <!-- Modal body -->
+                                <div class="modal-body" style="font-size:30px;">
+                                  <table class='card_intro' style="text-align:center; margin-left: auto; margin-right: auto;">
+                                    <thead>
+                                      <th>서비스 구분</th>
+                                      <th>할인</th>
+                                      <th>이용금액 기준</th>
+                                      <th>전월이용실적 기준</th>
+                                    </thead>
+              
+                                    <tbody>
+                                      <tr>
+                                        <td>CGV</td>
+                                        <td>35%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                        <td rowspan='6'>20만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>아웃백, VIPS</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>                          
+                                      </tr>
+                                      <tr>
+                                        <td>스타벅스</td>
+                                        <td>20%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>롯데월드</td>
+                                        <td>50%</td>
+                                        <td>이용금액 건당 3만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>GS25</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 1만원 ~ 2만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>교보문고</td>
+                                        <td>5%</td>
+                                        <td>이용금액 건당 2만원 ~ 5만원</td>
+                                      </tr>
+                                      <tr>
+                                        <td>대중교통</td>
+                                        <td>10%</td>
+                                        <td>월 이용금액 2만원까지</td>
+                                        <td rowspan='2'>30만원 이상 시</td>
+                                      </tr>
+                                      <tr>
+                                        <td>이동통신</td>
+                                        <td>2,500원</td>
+                                        <td>이용금액 건당 5만원 이상 시</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div><!-- End Bordered Tabs -->
+    
+                </div>
+              </div>
+            </div>
+        </div>
+    
+
+
+    </section>
+
+  </main><!-- End #main -->
+{% endblock content %}

@@ -6,13 +6,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+  <title>KB Platform</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../../assets/img/favicon.png" rel="icon">
-  <link href="../../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/kb.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -29,6 +29,7 @@
 
   <!-- Template Main CSS File -->
   <link href="../../assets/css/style.css" rel="stylesheet">
+  
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.2
@@ -36,8 +37,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    div{
+      font-size: 15px;
+    }
+  </style>
 </head>
-
 <body>
 
   <main>
@@ -45,53 +50,59 @@
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+          
+          <div class="row">
+            <div class="offset-lg-1 col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <br><br>
+              <img src="../assets/img/배경2.png">
+            </div>
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="../index.html" class="logo d-flex align-items-center w-auto">
+            <!-- <img src="../../assets/img/배경1.png" > -->
+            <div class="offset-lg-1 col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4" >
+                <a href="/index" class="logo d-flex align-items-center w-auto">
                   <img src="../../assets/img/kb.png" alt="">
-                  <span class="d-none d-lg-block">KB Platform</span>
+                  <span class="d-none d-lg-block" style="color:#2c2c2b;">KB platform</span>
                 </a>
               </div><!-- End Logo -->
 
+            <br>
               <div class="card mb-3">
 
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your username & password to login</p>
+                    <!-- <h5 class="card-title text-center pb-0 fs-4">  </h5> -->
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form class="row g-3 needs-validation" method="post" novalidate>
+                    {% csrf_token %}
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="yourUsername" class="form-label">아이디</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                        <input type="text" name="userID" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">아이디를 입력해주세요.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
+                      <label for="yourPassword" class="form-label">비밀번호</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                        <label class="form-check-label" for="rememberMe">자동로그인</label>
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                      <button id="signupBtn" class="btn btn-warning w-100" type="submit">로그인</button>
                     </div>
-                    <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="../pages-register.html">Create an account</a></p>
+                    <div class="col-12" style="font-size: 17px;">
+                      <p class="small mb-0">아이디가 없으시면 <a href="/register"><b>회원가입</b></a>버튼을 클릭해주세요.</p>
                     </div>
                   </form>
 
@@ -103,7 +114,6 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
               </div>
 
             </div>

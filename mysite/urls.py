@@ -21,8 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('index/', views.index),
-    path('user-profile/', views.user_profile),
+    # path('user-profile/', views.user_profile),
     path('login/', views.login),
+    path('logout/', views.logout),
     path('register/', views.register),
 
     path('faq/', views.faq),
@@ -33,4 +34,15 @@ urlpatterns = [
     path('accounts/', views.accounts),
     path('alarms/', views.alarms),
     path('cards/', views.cards),
+    path('transfer/', views.transfer),
+    path('find_kb/', views.find_kb),
+    path('cards_recom/', views.cards_recom),
+    path('stock/', views.stock),
+    path('stock_game/', views.stock_game),
+    path('myAsset/', views.myAsset),
+    path('myGold/', views.myGold),
+    path('stock_charts/', views.stock_charts),
+    path('attendance/', views.attendance),
+
+    path('stock_account/', views.stock_account),
 ]

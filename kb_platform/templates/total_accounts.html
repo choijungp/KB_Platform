@@ -38,6 +38,19 @@
     width: 100%;
   }
 
+    th{
+        font-size: 18px;
+    }
+    td{
+        font-size: 15px;
+    }
+    p{
+        font-size: 15px;
+    }
+    tr{
+        font-size : 15px;
+    }
+
   </style>
 
 <main id="main" class="main">
@@ -52,59 +65,81 @@
 
           <div class="card">
             <div class="card-body">
-              <hr style="color: #4776bc; height : 4px;">
+              <hr style="color: #545045; height : 4px;">
               <p><b>나의 소비 패턴을 확인하고 싶다면 <a href="/charts">소비 패턴 진단</a> 을 클릭하세요!</b></p>
               <h5 class="card-title"><b>입/출금계좌</b></h5>
               <!-- <p>나의 소비 패턴을 확인하고 싶다면 <a href="../charts-chartjs.html">소비 패턴 진단</a> 을 클릭하세요!</p> -->
-              <hr style="color: #4776bc; height : 4px;">
+              <hr style="color: #545045; height : 4px;">
 
               <!-- Table with stripped rows -->
               <table class="table">
                 <thead>
-                  <tr >
+                  <tr>
                     <th scope="col">계좌명</th>
                     <th scope="col">계좌번호</th>
                     <th scope="col">신규일</th>
                     <th scope="col">최근거래일</th>
                     <th scope="col">잔액(원)</th>
-                    <th scope="col">업무</th>
+                    <th scope="col" style="text-align: center;">업무　　　</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr  onmouseover="this.style.backgroundColor='#fdee8e'" onmouseout="this.style.backgroundColor=''">
+                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
                     <td>일반보통예금</td>
                     <td>123-45-6789-123</td>
                     <td>2014.05.27</td>
                     <td>2022.05.03</td>
                     <td>3,737,981</td>
-                    <td>                      
+                    <td>
+                      <div style="display: inline;">
                       <a href="/accounts">
-                      <button class="btn-2">
+                      <button class="btn-2" style=" display: inline; ">
                         조회
-                    </button></td>
+                    </button>
+                    <a href="/transfer">
+                      <button class="btn-2" style=" display: inline;">
+                        이체
+                    </button>
+                  </div>
+                  </td>
                   </tr>
-                  <tr  onmouseover="this.style.backgroundColor='#eaf7fe'" onmouseout="this.style.backgroundColor=''">
+                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
                     <td>KB국민 ONE통장</td>
                     <td>345-67-8901-234</td>
                     <td>2017.11.27</td>
                     <td>2022.04.28</td>
                     <td>5,768,140</td>
-                    <td>                      
+                    <td>
+                      <div style="display: inline;">
                       <a href="/accounts">
-                      <button class="w-btn-outline w-btn-gray-outline" type="button">
+                      <button class="btn-2" style=" display: inline; ">
                         조회
-                    </button></td>
+                    </button>
+                    <a href="/transfer">
+                      <button class="btn-2" style=" display: inline;">
+                        이체
+                    </button>
+                  </div>
+                  </td>
                   </tr>
-                  <tr  onmouseover="this.style.backgroundColor='#eaf7fe'" onmouseout="this.style.backgroundColor=''">
+                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
                     <td>KB종합통장</td>
                     <td>678-90-1234-567</td>
                     <td>2013.04.11</td>
                     <td>2020.02.14</td>
                     <td>7,280</td>
                     <td>
-                      <button class="w-btn-outline w-btn-gray-outline" type="button">
+                      <div style="display: inline;">
+                      <a href="/accounts">
+                      <button class="btn-2" style=" display: inline; ">
                         조회
-                    </button></td>
+                    </button>
+                    <a href="/transfer">
+                      <button class="btn-2" style=" display: inline;">
+                        이체
+                    </button>
+                  </div>
+                  </td>
                   </tr>
                 </tbody>
               </table>
@@ -123,7 +158,7 @@
               <br>
               <!-- End Table with stripped rows -->
               <h5 class="card-title"><b>예금/적금/신탁 계좌</b></h5>
-              <hr style="color: #4776bc; height : 4px;">
+              <hr style="color: #545045; height : 4px;">
               <table class="table">
                 <thead>
                   <tr>
@@ -132,23 +167,28 @@
                     <th scope="col">신규일</th>
                     <th scope="col">만기일</th>
                     <th scope="col">잔액(원)</th>
-                    <th scope="col">업무</th>
+                    <th scope="col" style="text-align: center;">업무　　　</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr  onmouseover="this.style.backgroundColor='#eaf7fe'" onmouseout="this.style.backgroundColor=''">
+                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
                     <td>KB 청년희망적금</td>
                     <td>901-23-4567-890</td>
                     <td>2022.02.25</td>
                     <td>2024.02.25</td>
                     <td>1,500,000</td>
                     <td>
+                      <div style="display: inline;">
                       <a href="/accounts">
-                        <button class="btn-2">
-                          조회
-                      </button>
-                      </a>
-                    </td>
+                      <button class="btn-2" style=" display: inline; ">
+                        조회
+                    </button>
+                    <a href="/transfer">
+                      <button class="btn-2" style=" display: inline;">
+                        이체
+                    </button>
+                  </div>
+                  </td>
                   </tr>
                 </tbody>
               </table>
@@ -158,7 +198,7 @@
               <br>
               <br>
               <h5 class="card-title"><b>외화신탁 계좌</b></h5>
-              <hr style="color: #4776bc; height : 4px;">
+              <hr style="color: #545045; height : 4px;">
               <table class="table">
                 <thead>
                   <tr>
@@ -186,5 +226,7 @@
       </div>
     </section>
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
+
+  
 {% endblock content %}
