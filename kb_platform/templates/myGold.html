@@ -27,6 +27,41 @@
     vertical-align: top;
     border-bottom: 2px solid #ccc;
     }
+
+#gold-1{
+    position: absolute;
+    top: 550px;
+    left: 500px;
+}
+
+#gold-2{
+    position: absolute;
+    top: 550px;
+    left: 650px;
+}
+
+.total-gold{
+    position: absolute;
+    font-size: 30px;
+    top: 180px;
+    left: 650px;
+}
+
+.my-gold{
+    position: absolute;
+    font-size: 30px;
+    top: 420px;
+    left: 630px;
+}
+
+.my-gold2{
+    position: absolute;
+    font-size: 36px;
+    top: 373px;
+    left: 650px;
+    color: #FB8E00;
+}
+
 </style>
 
 
@@ -41,36 +76,31 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <div id='mygold_reward'>
-                        <h4 class="card-title" style="font-weight:bold;">보유 GOLD 현황</h4>
-                            <!--총 골드 현황과 골드 이미지-->
-                            <div style="text-align : center;">
-                                <table>
-                                    <tr>
-                                      <th scope="row" style="font-size:15px;">총 보유 GOLD</th>
-                                      <td style="font-weight:bold;">15.345g</td>
-                                    </tr>
-                                </table>
-                                <img src='../assets/img/gold2.png' style=" width:100px;">
-                            </div>
-                            <p></p>
-                            <!--금쪽골드내용-->
-                            <div class="col-rg-6">
-                                <p style="text-align:center; font-size:15px; font-weight:bold;">현재 금쪽 GOLD는
-                                <span style="text-align:center; font-color;font-family:sans-serif; font-size:26px; color:gold;">1 . 345 g</span> 
-                                입니다.</p> 
-                            </div>
-                            <p></p>
-                            <!--버튼-->
-                            <div class="col-rg-6" style="text-align:center;">
-                                <span>   
-                                    {% comment %} <button type="button" class="btn btn-outline-light text-dark" style="font-weight:bold; margin-right:8%; border-color:#f9eeb6; font-size:15px;">금 사기</button> {% endcomment %}
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(205, 45, 55); color:white;">금 사기</button>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(1, 51, 191);">금 팔기</button>
-                                    {% comment %} <button type="button" class="btn btn-outline-light text-dark" style="font-weight:bold; border-color:#f9eeb6; font-size:15px;">금 팔기</button> {% endcomment %}
-                                </span>  
-                            </div>      
-                    </div>
+                    <img src="../assets/img/mygold.png" style="margin-top: 30px;">
+                    <div class="col-rg-6" style="text-align:center;">
+                        <span>   
+                            {% comment %} <button type="button" class="btn btn-outline-light text-dark" style="font-weight:bold; margin-right:8%; border-color:#f9eeb6; font-size:15px;">금 사기</button> {% endcomment %}
+                            <button type="button" id="gold-1" class="btn" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(205, 45, 55); color:white;">금 사기</button>
+                            <button type="button" id="gold-2" class="btn btn-primary" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(1, 51, 191);">금 팔기</button>
+                            {% comment %} <button type="button" class="btn btn-outline-light text-dark" style="font-weight:bold; border-color:#f9eeb6; font-size:15px;">금 팔기</button> {% endcomment %}
+                        </span>
+                        <div class="total-gold">
+                            <p>
+                                <b>15.345g</b>
+                            </p>
+                        </div>
+
+                        <div class="my-gold">
+                            <p>
+                                <b>0.009375g</b>
+                            </p>
+                        </div>
+
+                        <div class="my-gold2">
+                            <p>
+                                <b>5</b>
+                            </p>
+                        </div>
                 </div>
             </div>
         </div>
@@ -113,7 +143,7 @@
                             </script>
                         </div>
                     </div>
-  <!-- TradingView Widget END -->
+<!-- TradingView Widget END -->
                 </div>
             </div>
         </div>

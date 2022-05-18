@@ -16,25 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from kb_platform import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('index/', views.index),
-    # path('user-profile/', views.user_profile),
     path('login/', views.login),
     path('logout/', views.logout),
     path('register/', views.register),
 
-    path('faq/', views.faq),
-    path('contact/', views.contact),
-
     path('charts/', views.charts),
     path('total-accounts/', views.total_accounts),
-    path('accounts/', views.accounts),
-    path('alarms/', views.alarms),
+    path('<str:pk>/accounts/', views.accounts, name="accounts"),
     path('cards/', views.cards),
-    path('transfer/', views.transfer),
+    path('<str:pk>/transfer/', views.transfer, name="transfer"),
     path('find_kb/', views.find_kb),
     path('cards_recom/', views.cards_recom),
     path('stock/', views.stock),
@@ -45,4 +42,6 @@ urlpatterns = [
     path('attendance/', views.attendance),
 
     path('stock_account/', views.stock_account),
-]
+    path('updown_result/', views.updown_result),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

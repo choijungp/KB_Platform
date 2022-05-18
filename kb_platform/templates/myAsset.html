@@ -71,11 +71,11 @@
                           ],
                           datasets: [{
                             label: 'My First Dataset',
-                            data: [308,121,92],
+                            data: [{{bank_total}}, {{stock_total}}, {{gold_total}}],
                             backgroundColor: [
-                              'rgb(255, 206, 93)',
-                              'rgb(255, 170, 90)',
-                              'rgb(141, 209, 119)',
+                              '#E57A72',
+                              '#D2DB8D',
+                              '#F9A828',
                             ],
                             hoverOffset: 4
                           }]
@@ -119,6 +119,7 @@
                   </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
+                  {% comment %} 은행 Tab {% endcomment %}
                   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
                     <script>
@@ -128,10 +129,10 @@
                             var myLineChart = new Chart(ctx, {
                                 type: 'doughnut',
                                 data: {
-                                    labels: ["Spring", "Summer", "Fall", "Winter"],
+                                    labels: ["입출금", "예금/적금/주택청약", "펀드", "보험", "신탁", "기타"],
                                     datasets: [{
-                                        data: [1200, 1700, 800, 200],
-                                        backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"]
+                                        data: [{{bank_detail0}}, {{bank_detail1}}, 0, 0, 0, 0],
+                                        backgroundColor: ["#E57A72", "#F6B0B6", "#F0BACF", "#FAE7EC", "#E8DFF0", "#E180BA"]
                                     }]
                                 },
                                 options: {
@@ -155,25 +156,20 @@
                         </tr>
                       </thead>
                       <tbody style="font-size:15px;">
-                        <tr>
-                          <td>일반보통예금</td>
-                          <td>123-45-6789-123</td>
-                          <td>3,737,981</td>
-                        </tr>
-                        <tr>
-                          <td>KB국민 ONE통장</td>
-                          <td>345-67-8901-234</td>
-                          <td>5,768,140</td>
-                        </tr>
-                        <tr>
-                          <td>KB종합통장</td>
-                          <td>678-90-1234-567</td>
-                          <td>7,280</td>
-                        </tr>
+                        {% if user.is_authenticated %}
+                          {% for account in all_bank %}
+                              <tr>
+                                <td>{{account.acc_name}}</td>
+                                <td>{{account.acc_num}}</td>
+                                <td>{{account.total}}</td>
+                              </tr>
+                          {% endfor %}
+                        {% endif %}
                       </tbody>
                     </table>
                   </div>
 
+                  {% comment %} 주식 Tab {% endcomment %}
                   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                     <script>
                          {% comment %} 증권 2분류 {% endcomment %}
@@ -182,10 +178,10 @@
                               var myLineChart = new Chart(ctx, {
                                   type: 'doughnut',
                                   data: {
-                                      labels: ["예수금", "주식"],
+                                      labels: ["주식", "예수금"],
                                       datasets: [{
-                                          data: [200, 1700],
-                                          backgroundColor: ["rgb(255, 206, 93)", "rgb(255, 170, 89)"]
+                                          data: [{{stock_total}}-{{stock_tmp}}, {{stock_tmp}}],
+                                          backgroundColor: ["#D2DB8E", "#E7F6DE"]
                                       }]
                                   },
                                   options: {
@@ -208,20 +204,20 @@
                         </tr>
                       </thead>
                       <tbody style="font-size:15px;">
-                        <tr>
-                          <td>일반보통예금</td>
-                          <td>123-45-6789-123</td>
-                          <td>3,737,981</td>
-                        </tr>
-                        <tr>
-                          <td>KB국민 ONE통장</td>
-                          <td>345-67-8901-234</td>
-                          <td>5,768,140</td>
-                        </tr>
+                        {% if user.is_authenticated %}
+                          {% for account in all_stock %}
+                              <tr>
+                                <td>{{account.acc_name}}</td>
+                                <td>{{account.acc_num}}</td>
+                                <td>{{account.total}}</td>
+                              </tr>
+                          {% endfor %}
+                        {% endif %}
                       </tbody>
                     </table>
                   </div>
 
+                  {% comment %} 금 Tab {% endcomment %}
                   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <script>
                       $(document).ready(function() {
@@ -229,10 +225,10 @@
                           var myLineChart = new Chart(ctx, {
                               type: 'doughnut',
                               data: {
-                                  labels: ["Spring", "Summer", "Fall", "Winter"],
+                                  labels: ["내금내산", "금쪽 Gold"],
                                   datasets: [{
-                                      data: [1200, 1700, 800, 200],
-                                      backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)"]
+                                      data: [{{gold_total}}-{{goldReward}}, {{goldReward}}],
+                                      backgroundColor: ["#F9A828", "#F8EEBC"]
                                   }]
                               },
                               options: {
@@ -255,11 +251,15 @@
                         </tr>
                       </thead>
                       <tbody style="font-size:15px;">
-                        <tr>
-                          <td>일반보통예금</td>
-                          <td>123-45-6789-123</td>
-                          <td>3,737,981</td>
-                        </tr>
+                        {% if user.is_authenticated %}
+                          {% for account in all_gold %}
+                              <tr>
+                                <td>{{account.acc_name}}</td>
+                                <td>{{account.acc_num}}</td>
+                                <td>{{account.total}}</td>
+                              </tr>
+                          {% endfor %}
+                        {% endif %}
                       </tbody>
                     </table>
                   </div>

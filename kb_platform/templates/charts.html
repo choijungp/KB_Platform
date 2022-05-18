@@ -14,7 +14,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title"  style="font-weight:bold;">월별 지출 내역</h5>
-
+            
             <!-- Line Chart -->
             <canvas id="lineChart" style="max-height: 400px;"></canvas>
             <script>
@@ -22,10 +22,10 @@
                 new Chart(document.querySelector('#lineChart'), {
                   type: 'line',
                   data: {
-                    labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월'],
+                    labels: ['1월', '2월', '3월', '4월', '5월'],
                     datasets: [{
                       label: '만원',
-                      data: [65, 59, 80, 81, 56, 55, 40],
+                      data: [{{months.0}}, {{months.1}}, {{months.2}}, {{months.3}}, {{months.4}}],
                       fill: false,
                       borderColor: 'rgb(75, 192, 192)',
                       tension: 0.1
@@ -62,7 +62,7 @@
                     labels: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
                     datasets: [{
                       label: '만원',
-                      data: [6, 4, 5, 8, 10, 15, 10],
+                      data: [{{days.0}}, {{days.1}}, {{days.2}}, {{days.3}}, {{days.4}}, {{days.5}}, {{days.6}}],
                       backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 159, 64, 0.2)',
@@ -114,28 +114,28 @@
                   radar: {
                     // shape: 'circle',
                     indicator: [{
-                        name: '쇼핑',
-                        max: 10000
-                      },
-                      {
                         name: '식비',
-                        max: 10000
-                      },
-                      {
-                        name: '교통비',
-                        max: 10000
+                        max: 1500000
                       },
                       {
                         name: '이동통신',
-                        max: 10000
+                        max: 1500000
                       },
                       {
-                        name: '의료',
-                        max: 10000
+                        name: '쇼핑',
+                        max: 1500000
                       },
                       {
                         name: '문화생활',
-                        max: 10000
+                        max: 1500000
+                      },
+                      {
+                        name: '의료',
+                        max: 1500000
+                      },
+                      {
+                        name: '교통비',
+                        max: 1500000
                       }
                     ]
                   },
@@ -143,11 +143,11 @@
                     name: 'Budget vs spending',
                     type: 'radar',
                     data: [{
-                        value: [9000, 8500, 5000, 8000, 7500, 7700],
+                        value: [{{types.0}}, {{types.1}}, {{types.2}}, {{types.3}}, {{types.4}}, {{types.5}}],
                         name: '내 소비'
                       },
                       {
-                        value: [6000, 6000, 6500, 7000, 5400, 7000],
+                        value: [800000, 200000, 500000, 250000, 97000, 37000],
                         name: '20대 소비'
                       }
                     ]
@@ -181,7 +181,7 @@
                     ],
                     datasets: [{
                       label: 'My First Dataset',
-                      data: [600000, 100000, 300000, 200000, 100000, 200000],
+                      data: [{{types.0}}, {{types.1}}, {{types.2}}, {{types.3}}, {{types.4}}, {{types.5}}],
                       backgroundColor: [
                         'rgb(255, 206, 93)',
                         'rgb(255, 170, 90)',
@@ -215,14 +215,23 @@
                   document.addEventListener("DOMContentLoaded", () => {
                     new ApexCharts(document.querySelector("#reportsChart"), {
                       series: [{
-                        name: '편의점',
+                        name: '식비',
                         data: [31, 40, 28, 51, 42, 82, 56],
                       }, {
-                        name: '쇼핑',
+                        name: '이동통신',
                         data: [11, 32, 45, 32, 34, 52, 41]
                       }, {
-                        name: '문화생활',
+                        name: '쇼핑',
                         data: [15, 11, 32, 18, 9, 24, 11]
+                      }, {
+                        name: '문화생활',
+                        data: [11, 32, 45, 32, 34, 52, 41]
+                      }, {
+                        name: '의료',
+                        data: [11, 32, 45, 32, 34, 52, 41]
+                      }, {
+                        name: '교통비',
+                        data: [11, 32, 45, 32, 34, 52, 41]
                       }],
                       chart: {
                         height: 350,

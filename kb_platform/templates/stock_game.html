@@ -1,22 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <script>
     function showPopup(){
         window.open("/attendance","팝업 테스트","width=920, height=920, top=50, left=520");
     }
-    
-</script>
 
+    function updown_result(){
+        window.open("/updown_result","팝업 테스트","width=920, height=920, top=50, left=520");
+    }
+
+  $(function(){
+    $('#img_btn3').on('click', function(){
+      $('#img_btn3').remove();
+      $('#push_q').remove();
+      $('#spinnerBtn2').show();
+      setTimeout(function(){
+        $('#spinnerBtn2').hide();
+        $('#test_img').show();
+        $('#warning').show()
+      }, 700);
+    });
+  });
+
+  function get_updown() {
+  
+  const updownNodeList = document.getElementsByName('answer');
+  
+  // updownNodeList.forEach((node) => {
+  //   if(node.checked)  {
+  //     document.getElementById('result').innerText
+  //       = node.value;
+  //   }
+  // });
+}
+
+function submit(){
+  // var res = document.getElementsByID('answer');
+  var st = $(":input:radio[name=answer]:checked").val();
+
+  if (st == "상승"){
+    var submit = confirm('상승에 응모하시겠습니까?');
+    alert('응모가 완료되었습니다.');
+  }
+  else{
+    var submit = confirm('하락에 응모하시겠습니까?');
+    alert('응모가 완료되었습니다.');
+  }
+  // $('#radioUp')
+  // document.write(submit);
+}
+</script>
 <!-- <link rel="stylesheet" href="../assets/css/button.css"> -->
 <!-- TradingView Widget BEGIN -->
 <main id="main" class="main">
-<div class="pagetitle"><h1>종가 예측 UP & DOWN</h1></div>
+<!-- <div class="pagetitle"><h1>종가 예측 UP & DOWN</h1></div> -->
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
+            <div class="card" style="height: 2200px;">
+                <div class="card-body" >
+                  <img src="../assets/img/test.png" image-rendering: -webkit-optimize-contrast style="margin-top: 20px;">
                     <div class="tradingview-widget-container" style="height:700px;">
                     <!-- <div id="tradingview_72e7d"></div> -->
                         <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -48,76 +93,84 @@
                     <br>
                     <!-- <a href="javascript:void(0);" onclick="showPopup();" style="font-size: 17px; text-decoration:underline;">종가 예측 UP&DOWN 안내사항 및 출석체크</a> -->
                     <div style="text-align: center;">
-                      <button onclick="showPopup();" button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"  style="margin-top:15px;">종가 예측 UP&DOWN 안내사항 및 출석체크</button>
+                      <button onclick="showPopup();" button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"  style="margin-top:15px; background: #ffffff; border: 0;" id="btn-check"><b>종가 예측 UP&DOWN 안내사항 및 출석체크</b></button>
                     </div>
 
                     <br><br>
-                    <div class="container">
-                    <div class="container" style="text-align: center; font-size: 22px;">
-                      <p><b>내일의 KB 금융 종가</p>
-                      <p>오를까요? 내릴까요?</b></p>
-                    </div> 
-                    <div class="row" id="total_border" style="margin:auto;">
-                      <div id="up_border" class="col-lg-3" style="margin:auto;">
-                        <img src="../assets/img/상승.png" style="width: 130px; margin:20px;"><br>
-                        <input type="radio" id="ex_rd" name="ex_rds" style="margin:auto;"> 
-                        <label for="ex_rd" style="margin-left:50px; margin:auto;"></label> 
-                      </div>
-                      <div id="down_border" class="col-lg-3" style="margin:auto;">
-                        <img src="../assets/img/하락.png" style="width: 130px; margin:20px;"><br>
-                        <input type="radio" id="ex_rd2" name="ex_rds"  style="margin:auto;"> 
-                        <label for="ex_rd2" style="margin-right:45px; margin:auto;" ></label>
-                      </div>
-                    </div>
-                    <div style="text-align: center;">
-                        <br><br><br><br>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"  style="margin-top:15px;">응모하기</button>
-                    </div>
-                    <br><br>
-                    <div style="text-align: center;">
-                        <br><br>
-                    </div>
+
+
+                    <div class="stock">
+
+                <input type="radio" id="radioUp" name="answer" value="상승" style="margin:auto; width:20px;height:20px;border:1px;" > 
+
+                <input type="radio" id="radioDown" name="answer" value="하락"  style="margin:auto; width:20px;height:20px;border:1px;">
+
+                <button type="button" class="btn_image" id="img_btn3" style="border: 0;background-color: #ffffff;"><img src="../assets/img/q.png"></button>
+                <div id="spinnerBtn2" class="spinner-border text-warning" style="margin-left:auto; margin-right:auto; margin-bottom:20px; display:none;"></div>
+                <img src="../assets/img/ai상승.png" id="test_img" style="display: none;">
                 </div>
+                <input type="image" src="../assets/img/응모.png" / id="btn-4" onclick="get_updown(), submit()">
+                <input type="image" src="../assets/img/결과.png" / id="btn-5" onclick="updown_result();">  
                 </div>
+                <img src="../assets/img/point.png" id="point">
+                <img src="../assets/img/push_q.png" id="push_q">
+                <img src="../assets/img/경고문.png" id="warning" style="display: none;">
             </div>
         </div>
     </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" style="font-weight:bold; margin-bottom:30px;">실시간 댓글 Review</h5>
-            <div class="write_comment">
-              <form action="#">
-                <textarea name="" id="" cols="110" rows="2"></textarea>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"  style="margin-top:15px;">댓글작성</button>
-              </form>
-            </div>
-            <div class="comment_list">
-              <table class="c_list">
-                <thead>
-                  <th>글 작성자</th>
-                  <th>댓글</th>
-                  <th>작성시간</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>g******y</td>
-                    <td>아 주식 내려갔네 짱난다</td>
-                    <td>2022-05-13 19:36</td>
-                  </tr>
-                  <tr>
-                    <td>k****e</td>
-                    <td>앗싸 ! 오백만원 !!</td>
-                    <td>2022-05-13 19:28</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+    <div class="card">
+      <div class="card-header">
+          <div class="col-md-12">
+              {% csrf_token %}
+              <div class="form-group row">
+                  <textarea class="form-control" id="content_id" rows="3" placeholder="댓글을 입력해주세요."></textarea>
+              </div>
+              <div class="text-right" style="float:right">
+                  <button id="comment_write" class="btn btn-sm">댓글달기</button>
+              </div>
           </div>
-        </div>
-    </div>
+          <hr>
+          <div id="more_comment">
+              {% if comments %}
+                  {% for comment in comments %}
+                  <div id='{{ comment.id }}'>
+                      {% if comment.deleted %}
+                      <span>삭제된 댓글입니다.</span><hr>
+                      {% else %}
+                          {% if comment.writer == free.writer %}
+                          <strong>{{ comment.writer }}&nbsp;<span>(글쓴이)</span></strong>
+                          {% else  %}
+                          <strong>{{ comment.writer }}</strong>
+                          {% endif %}
+                          <span style="float:right">{{ comment.created }}</span>
+                          {% if comment.writer == request.user or request.user.level == '0' or request.user.level == '1' %}
+                          <div>
+                              <div style="white-space:pre-wrap; text-align:left;">{{ comment.content }}</div>
+                              <div style="text-align: right;">
+                                  <a onclick="commentDelete('{{comment.id}}');">댓글삭제</a>
+                              </div>
+                          </div>
+                          <hr>
+                          {% else %}
+                          <div>
+                              <div style="white-space:pre-wrap; text-align:left;">{{ comment.content }}</div>
+                          </div>
+                          <hr>
+                          {% endif %}
+                      {% endif %}
+                  </div>
+                  <div class='{{ comment.id }}'></div>
+                  {% endfor %}
+              {% endif %}
+              <input type="hidden" id="comment_writer" value={{request.user}}>
+              <div id="comment_list"></div>
+          </div>
+      </div>
+  </div>
+
+
+
 </section>
 </main>
 <!-- TradingView Widget END -->
@@ -186,5 +239,99 @@
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
 }
 
+
+#radioUp {
+  position: absolute;
+  top: 1910px;
+  left : 440px; 
+}
+
+#radioDown {
+  position: absolute;
+  top: 1910px;
+  left : 805px;
+}
+
+.card-body{
+  /* background: rgb(255,192,80); */
+  border-radius: 2%;
+  /* background-image: url('../assets/img/test.png'); */
+  background-size: 100% 100%;
+}
+
+.tradingview-widget-container{
+  position: absolute;
+  top: 576px;
+  left : 49px;
+  width: 1150px;
+  /* margin-top: 750px; */
+}
+
+.stock{
+  margin-top: 680px;
+}
+
+#btn-check{
+  position: absolute;
+  top: 447px;
+  left: 451px;
+}
+
+#img_btn3{
+  position: absolute;
+  top: 1555px;
+  left: 602px;
+}
+
+#spinnerBtn2{
+  position: absolute;
+  top: 1565px;
+  left: 612px;
+}
+
+#test_img{
+  position: absolute;
+  top: 1555px;
+  left: 432px;
+}
+
+#btn-4{
+  position: absolute;
+  top: 2005px;
+  left: 522px;
+}
+
+#btn-5{
+  position: absolute;
+  top: 2060px;
+  left: 522px;
+}
+
+#point{
+  position: absolute;
+  top: 485px;
+  left: 785px;
+}
+
+#push_q{
+  position: absolute;
+  top: 1615px;
+  left: 435px;
+}
+
+#warning{
+  position: absolute;
+  top: 1615px;
+  left: 435px;
+}
+
+.confirm{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>
+
+
 {% endblock content %}

@@ -51,7 +51,7 @@
         font-size : 15px;
     }
 
-  </style>
+</style>
 
 <main id="main" class="main">
 
@@ -68,10 +68,9 @@
               <hr style="color: #545045; height : 4px;">
               <p><b>나의 소비 패턴을 확인하고 싶다면 <a href="/charts">소비 패턴 진단</a> 을 클릭하세요!</b></p>
               <h5 class="card-title"><b>입/출금계좌</b></h5>
-              <!-- <p>나의 소비 패턴을 확인하고 싶다면 <a href="../charts-chartjs.html">소비 패턴 진단</a> 을 클릭하세요!</p> -->
               <hr style="color: #545045; height : 4px;">
 
-              <!-- Table with stripped rows -->
+              <!-- ======================= 입출금 TABLE ======================= -->
               <table class="table">
                 <thead>
                   <tr>
@@ -84,80 +83,42 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
-                    <td>일반보통예금</td>
-                    <td>123-45-6789-123</td>
-                    <td>2014.05.27</td>
-                    <td>2022.05.03</td>
-                    <td>3,737,981</td>
-                    <td>
-                      <div style="display: inline;">
-                      <a href="/accounts">
-                      <button class="btn-2" style=" display: inline; ">
-                        조회
-                    </button>
-                    <a href="/transfer">
-                      <button class="btn-2" style=" display: inline;">
-                        이체
-                    </button>
-                  </div>
-                  </td>
-                  </tr>
-                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
-                    <td>KB국민 ONE통장</td>
-                    <td>345-67-8901-234</td>
-                    <td>2017.11.27</td>
-                    <td>2022.04.28</td>
-                    <td>5,768,140</td>
-                    <td>
-                      <div style="display: inline;">
-                      <a href="/accounts">
-                      <button class="btn-2" style=" display: inline; ">
-                        조회
-                    </button>
-                    <a href="/transfer">
-                      <button class="btn-2" style=" display: inline;">
-                        이체
-                    </button>
-                  </div>
-                  </td>
-                  </tr>
-                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
-                    <td>KB종합통장</td>
-                    <td>678-90-1234-567</td>
-                    <td>2013.04.11</td>
-                    <td>2020.02.14</td>
-                    <td>7,280</td>
-                    <td>
-                      <div style="display: inline;">
-                      <a href="/accounts">
-                      <button class="btn-2" style=" display: inline; ">
-                        조회
-                    </button>
-                    <a href="/transfer">
-                      <button class="btn-2" style=" display: inline;">
-                        이체
-                    </button>
-                  </div>
-                  </td>
-                  </tr>
+                  {% if user.is_authenticated %}
+                    {% for account in account_0 %}
+                        <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
+                          <td>{{account.acc_name}}</td>
+                          <td>{{account.acc_num}}</td>
+                          <td>{{account.created_at|date:"Y-m-d"}}</td>
+                          <td>{{account.updated_at|date:"Y-m-d"}}</td>
+                          <td>{{account.total}}</td>
+                          <td>
+                            <div style="display: inline;">
+                              <a href="{% url 'accounts' account.pk %}">
+                              <button class="btn-2" style=" display: inline; ">
+                                조회
+                              </button>
+                              <a href="{% url 'transfer' account.pk %}">
+                              <button class="btn-2" style=" display: inline;">
+                                이체
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  {% endif %}
                 </tbody>
               </table>
-              <!-- <table>
-                <thead>
-                  <th scope="col"><h5><b>입/출금계좌 총잔액</b></h5></th>
-                  <th scope="col" align="right">
-                  <h5><b>9,513,401원</b></h5>
-                  </th>
-                </thead>
-              </table> -->
               <div style="float:left"><h5><b>입/출금계좌 총잔액</b></h5></div>
-              <div style="float: right; margin-right: 100px;"><h5><b>9,513,401 원</b></h5></div> 
+                    <div style="float: right; margin-right: 100px;">
+                      <h5><b>{{sum_total0}} 원 </b></h5>
+                    </div> 
               <br>
               <br>
               <br>
               <!-- End Table with stripped rows -->
-              <h5 class="card-title"><b>예금/적금/신탁 계좌</b></h5>
+
+              <!-- ======================= 예금/적금/신탁 TABLE ======================= -->
+              <h5 class="card-title"><b>예금/적금/청약 계좌</b></h5>
               <hr style="color: #545045; height : 4px;">
               <table class="table">
                 <thead>
@@ -171,33 +132,42 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
-                    <td>KB 청년희망적금</td>
-                    <td>901-23-4567-890</td>
-                    <td>2022.02.25</td>
-                    <td>2024.02.25</td>
-                    <td>1,500,000</td>
-                    <td>
-                      <div style="display: inline;">
-                      <a href="/accounts">
-                      <button class="btn-2" style=" display: inline; ">
-                        조회
-                    </button>
-                    <a href="/transfer">
-                      <button class="btn-2" style=" display: inline;">
-                        이체
-                    </button>
-                  </div>
-                  </td>
-                  </tr>
+                  {% if user.is_authenticated %}
+                    {% for account in account_1 %}
+                      <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
+                        <td>{{account.acc_name}}</td>
+                        <td>{{account.acc_num}}</td>
+                        <td>{{account.created_at|date:"Y-m-d"}}</td>
+                        <td>{{account.updated_at|date:"Y-m-d"}}</td>
+                        <td>{{account.total}}</td>
+                        <td>
+                          <div style="display: inline;">
+                            <a href="{% url 'accounts' account.pk %}">
+                            <button class="btn-2" style=" display: inline; ">
+                              조회
+                            </button>
+                            <a href="/transfer">
+                            <button class="btn-2" style=" display: inline;">
+                              이체
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
                 </tbody>
               </table>
+
               <div style="float:left"><h5><b>예금/적금/신탁 계좌 총잔액</b></h5></div>
-              <div style="float: right; margin-right: 100px;"><h5><b>1,500,000 원</b></h5></div> 
+                <div style="float: right; margin-right: 100px;">
+                  <h5><b>{{sum_total1}}원</b></h5>
+                </div> 
+
               <br>
               <br>
               <br>
-              <h5 class="card-title"><b>외화신탁 계좌</b></h5>
+              <!-- ======================= 금 통장 TABLE ======================= -->
+              <h5 class="card-title"><b>금 통장 계좌</b></h5>
               <hr style="color: #545045; height : 4px;">
               <table class="table">
                 <thead>
@@ -206,20 +176,44 @@
                     <th scope="col">계좌번호</th>
                     <th scope="col">신규일</th>
                     <th scope="col">만기일</th>
-                    <th scope="col">통화</th>
                     <th scope="col">잔액</th>
                     <th scope="col">업무</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-
-                    </td>
-                  </tr>
+                  {% if user.is_authenticated %}
+                    {% for account in account_2 %}
+                      <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
+                        <td>{{account.acc_name}}</td>
+                        <td>{{account.acc_num}}</td>
+                        <td>{{account.created_at|date:"Y-m-d"}}</td>
+                        <td>{{account.updated_at|date:"Y-m-d"}}</td>
+                        <td>{{account.total}}</td>
+                        <td>
+                          <div style="display: inline;">
+                            <a href="{% url 'accounts' account.pk %}">
+                              <button class="btn-2" style=" display: inline; ">
+                                조회
+                              </button>
+                            <a href="/transfer">
+                            <button class="btn-2" style=" display: inline;">
+                              이체
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
                 </tbody>
               </table>
-              <!-- <center><img src = "../../assets/img/조회결과2.png"></center> -->
+              {% if account_2.length == 0 %}
               <center><b>조회 결과가 없습니다.</b></center>
+              {% else %}
+              <div style="float:left"><h5><b>금 통장 총잔액</b></h5></div>
+                <div style="float: right; margin-right: 100px;">
+                  <h5><b>{{sum_total2}}원</b></h5>
+                </div> 
+              {% endif %}
             </div>
           </div>
         </div>

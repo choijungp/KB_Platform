@@ -83,29 +83,34 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
-                    <td>종합위탁</td>
-                    <td>123-45-6789-123</td>
-                    <td>2014.05.27</td>
-                    <td>2022.05.03</td>
-                    <td>3,737,981</td>
-                    <td>
-                      <div style="display: inline;">
-                      <a href="/accounts">
-                      <button class="btn-2" style=" display: inline; ">
-                        조회
-                    </button>
-                    <a href="/transfer">
-                      <button class="btn-2" style=" display: inline;">
-                        이체
-                    </button>
-                  </div>
-                  </td>
-                  </tr>
+                  {% if user.is_authenticated %}
+                    {% for account in all_accounts %}
+                      <tr  onmouseover="this.style.backgroundColor='#ffe168'" onmouseout="this.style.backgroundColor=''">
+                        <td>{{account.acc_name}}</td>
+                        <td>{{account.acc_num}}</td>
+                        <td>{{account.created_at|date:"Y-m-d"}}</td>
+                        <td>{{account.updated_at|date:"Y-m-d"}}</td>
+                        <td>{{account.total}}</td>
+                        <td>
+                          <div style="display: inline;">
+                            <a href="{% url 'accounts' account.pk %}">
+                              <button class="btn-2" style=" display: inline; ">
+                                조회
+                              </button>
+                            <a href="/transfer">
+                            <button class="btn-2" style=" display: inline;">
+                              이체
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    
                 </tbody>
               </table>
               <div style="float:left"><h5><b>증권계좌 총잔액</b></h5></div>
-              <div style="float: right; margin-right: 100px;"><h5><b>3,737,981 원</b></h5></div> 
+              <div style="float: right; margin-right: 100px;"><h5><b>{{account.total}}원</b></h5></div> 
+              {% endfor %}
+              {% endif %}
               <br>
               <br>
               <br>

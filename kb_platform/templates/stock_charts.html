@@ -1,12 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<script>
+<script type="text/javascript">
     $(function(){
-        $('#searchBtn').on('click', function(){
-          var stock = $('.form-control').val();
-          $('.js-button-text text-9pA37sIi text-IQnsk0hp').text(stock);
+        var stock = 58100;
+
+        $('#sellDown').on('click', function(){
+            var num_id = document.getElementById('sellVal');
+            var stock_id = document.getElementById('sellPrice');
+            
+            var num = num_id.value;
+            if (num != 0) {
+                num = parseInt(num)-1;
+            }
+            num_id.value = num;
+            stock_id.setAttribute('placeholder', parseInt(stock*num) +'원')
         });
+
+        $('#sellUp').on('click', function(){
+            var num_id = document.getElementById('sellVal');
+            var stock_id = document.getElementById('sellPrice');
+            var num = num_id.value;
+            num = parseInt(num) + 1;
+            num_id.value = num;
+            stock_id.setAttribute('placeholder', parseInt(stock*num) +'원')
+        });
+
+        $('#buyDown').on('click', function(){
+            var num_id = document.getElementById('buyVal');
+            var stock_id = document.getElementById('buyPrice');
+            var num = num_id.value;
+            if (num != 0) {
+                num = parseInt(num)-1;
+            }
+            num_id.value = num;
+            stock_id.setAttribute('placeholder', parseInt(stock*num) +'원')
+        });
+
+        $('#buyUp').on('click', function(){
+            var num_id = document.getElementById('buyVal');
+            var stock_id = document.getElementById('buyPrice');
+            var num = num_id.value;
+            num = parseInt(num) + 1;
+            num_id.value = num;
+            stock_id.setAttribute('placeholder', parseInt(stock*num) +'원')
+        });
+
     });
 </script>
 
@@ -15,11 +54,6 @@
 <div class="pagetitle">
     <div class="input-group mb-3">
         <h1>주식</h1>
-
-        {% comment %} <input type="text" class="form-control" placeholder="Search" style="margin-left:100px;">
-        <div class="input-group-append">
-          <button id="searchBtn" class="btn btn-warning" type="submit">검색</button>
-        </div> {% endcomment %}
     </div>
 </div>
 <section class="section">
@@ -73,13 +107,13 @@
                               <option value="시장가">시장가</option>
                             </select>
                             <br>
-                            <input type="text" style="width:200px; margin-top:30px;" placeholder="원">
+                            <input id="sellPrice" type="text" style="width:200px; margin-top:30px;" placeholder="58100원">
                             <br>
                             <div style="margin-top:10px;">
                                 <input type=hidden name="sell_price" value="5500"  style="width:180px;">
-                                <input type="button" value=" - " onclick="del();">
-                                <input type="text" name="amount" value="1" size="3" onchange="change();">
-                                <input type="button" value=" + " onclick="add();">
+                                <input id="sellDown" type="button" value=" - ">
+                                <input id="sellVal" type="text" name="amount" value="1" size="3">
+                                <input id="sellUp" type="button" value=" + ">
                             </div>
                             <button type="button" class="btn" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(1, 51, 191); color:white;">팔자</button>
                         </form>
@@ -188,13 +222,13 @@
                               <option value="시장가">시장가</option>
                             </select>
                             <br>
-                            <input type="text" style="width:200px; margin-top:30px;" placeholder="원">
+                            <input id="buyPrice" type="text" style="width:200px; margin-top:30px;" placeholder="58100원">
                             <br>
                             <div style="margin-top:10px;">
                                 <input type=hidden name="sell_price" value="5500"  style="width:180px;">
-                                <input type="button" value=" - " onclick="del();">
-                                <input type="text" name="amount" value="1" size="3" onchange="change();">
-                                <input type="button" value=" + " onclick="add();">
+                                <input id="buyDown" type="button" value=" - ">
+                                <input id="buyVal" type="text" name="amount" value="1" size="3">
+                                <input id="buyUp"  type="button" value=" + ">
                             </div>
                             <button type="button" class="btn" data-toggle="modal" data-target="#myModal"  style="margin-top:30px; background:rgb(205, 45, 55); color:white;">사자</button>
                         </form>
